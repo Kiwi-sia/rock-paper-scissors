@@ -1,81 +1,67 @@
-//play 5 matches
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        console.log(playRound(getPlayerSelection, computerSelection));
-        console.log('You have played '+ i + ' times.');
-    }
+//get computer choice by random
+function getComputerChoice() {
+  let computerSelection;
+  let choice = Math.random();
+  choice <= 0.33
+    ? (computerSelection = "Paper")
+    : choice <= 0.66
+    ? (computerSelection = "Rock")
+    : (computerSelection = "Cissors");
+  return computerSelection;
+}
+//get user input by prompt
+function getPlayerSelection() {
+  let playerSelection = prompt(
+    "Please choose to play one of the following: \nrock, paper, cissors"
+  );
+  return playerSelection;
 }
 
-//decide who wins in a match
-function playRound(getPlayerSelection, computerSelection) {
+//get both selections
+const computerSelection = getComputerChoice();
+const playerSelection = getPlayerSelection();
+//play a round of the game
+//declare the round winner
 
-    //console.log('Computer played ' + computerSelection.toUpperCase());
-    //results for each case of thing that player can play
-    switch (getPlayerSelection().toUpperCase()) {
-        case 'ROCK':
-            if (computerSelection.toUpperCase() == 'ROCK') {
-                console.log(draw);
-            } else if (computerSelection.toUpperCase() == 'CISSORS') {
-                console.log(playerWins + ' Rock beats cissors!');
-            } else if (computerSelection.toUpperCase() == 'PAPER') {
-                console.log(playerLose + ' Paper beats rock!')
-            } else {
-                console.log(computerError)
-            }
-            break;
+//create a score variable for player-win
+let playerWinScore = 0;
+//create a score variable for computer-win
+let computerWinScore = 0;
+//until player-win or computer-win is 5 play a round
+//declare who won
 
-        case 'PAPER':
-            if (computerSelection.toUpperCase() == 'ROCK') {
-                console.log(playerWins + ' Paper beats rock!');
-            } else if (computerSelection.toUpperCase() == 'CISSORS') {
-                console.log(playerLose + ' Cissors beat paper!');
-            } else if (computerSelection.toUpperCase() == 'PAPER') {
-                console.log(draw)
-            } else {
-                console.log(computerError)
-            }
-            break;
+//get match results
+console.log(playRound(playerSelection, computerSelection));
 
-        case 'CISSORS':
-            if (computerSelection.toUpperCase() == 'ROCK') {
-                console.log(playerLose + ' Rock beats cissors!');
-            } else if (computerSelection.toUpperCase() == 'CISSORS') {
-                console.log(draw);
-            } else if (computerSelection.toUpperCase() == 'PAPER') {
-                console.log(playerWins + ' Cissors beat paper!')
-            } else {
-                console.log(computerError)
-            }
-            break;
+//play 5 matches
+function game() {
+  //   for (let i = 1; i <= 5; i++) {
+  //   }
+}
 
-        default:
-            console.log('There was an error in your input. Please choose to play one of the following: Paper, Rock, Cissors');
-            break;
-    }
+function playRound(playerSelection, computerSelection) {
+  playerSelection = playerSelection.toUpperCase();
+  computerSelection = computerSelection.toUpperCase();
+
+  if (computerSelection == playerSelection) {
+    console.log(draw);
+  } else if (
+    (computerSelection == "PAPER" && playerSelection == "ROCK") ||
+    (computerSelection == "ROCK" && playerSelection == "CISSORS") ||
+    (computerSelection == "CISSORS" && playerSelection == "PAPER")
+  ) {
+    console.log(playerLose);
+  } else if (
+    (playerSelection == "PAPER" && computerSelection == "ROCK") ||
+    (playerSelection == "ROCK" && computerSelection == "CISSORS") ||
+    (playerSelection == "CISSORS" && computerSelection == "PAPER")
+  ) {
+    console.log(playerWins);
+  }
 }
 
 //static phrases
-const computerError = 'There was an error in computer selection';
-const playerWins = 'Congratulations! You win!';
-const playerLose = 'Sorry, you lose!';
-const draw = 'It\'s a draw, play again!';
-
-//const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-
-//get match results
-console.log(game(getPlayerSelection, computerSelection));
-
-//choose rock/paper/cissors by random for the compter choice
-function getComputerChoice() {
-    let computerSelection;
-    let choice = Math.random();
-    choice <= 0.33 ? computerSelection = 'Paper' : (choice <= 0.66 ? computerSelection = 'Rock': computerSelection ='Cissors');
-    return computerSelection;
-}
-
-//prompt user to choose what to play
-function getPlayerSelection() {
-    let choice = prompt('Please choose to play one of the following: \nrock, paper, cissors');
-    return choice;
-}
+const computerError = "There was an error in computer selection";
+const playerWins = "Congratulations! You win!";
+const playerLose = "Sorry, you lose!";
+const draw = "It's a draw, play again!";
