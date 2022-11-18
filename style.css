@@ -1,0 +1,83 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+h1,
+p {
+	font-size: 3rem;
+	text-align: center;
+}
+p {
+	font-size: 2rem;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.button,
+.play-again {
+	background-color: #20b2aa;
+	padding: 10px 15px;
+	border-radius: 15px;
+	font-size: 2rem;
+}
+.clicked {
+	transform: scale(1.1);
+	box-shadow: 0 0 #ffc600;
+	transition: all 2s ease;
+	background-color: gold;
+	text-align: center;
+}
+
+#scoreboard {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.score {
+	color: gold;
+	font-size: 3rem;
+}
+
+.match {
+	color: #147570;
+	font-size: 2rem;
+	font-weight: bold;
+}
+.winner {
+	color: #ac9220;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+#scoreboard {
+	min-height: 200px;
+	margin: 20px;
+	border: 2px solid black;
+	font-size: 1.8rem;
+	border-radius: 2rem;
+}
+
+/* .rock {
+    background-image: url("assets/rock.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+} */
+
+.play-again {
+	background-color: silver;
+	flex: 1;
+	color: white;
+	font-weight: bold;
+	margin: 10px 0;
+}
